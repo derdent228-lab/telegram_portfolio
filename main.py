@@ -4,14 +4,14 @@ import asyncio
 
 # Данные для авторизации (получить на my.telegram.org)
 API_ID = 1234567 
-API_HASH = 1234567
+API_HASH = '1234567'
 
 
 app = Client("my_account", api_id=API_ID, api_hash=API_HASH)
 
 print("Бот запускается... Ожидание сообщений.")
 
-@app.on_message(filters.private & ~filters.me)
+@app.on_message(filters.private & ~filters.me & filters.text & ~filters.bot)
 async def smart_reply(client, message):
     text = message.text.lower() if message.text else ""
     
